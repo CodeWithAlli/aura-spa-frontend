@@ -1,153 +1,132 @@
-import { motion } from "framer-motion";
-import { Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Instagram, Facebook, MessageCircle, X } from "lucide-react";
 import { useState } from "react";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
   { label: "Servicios", href: "#servicios" },
-  { label: "Tratamientos", href: "#tratamientos" },
-  { label: "Promociones", href: "#promociones" },
-  { label: "Reservas", href: "#reservas" },
-  { label: "Testimonios", href: "#testimonios" },
+  { label: "Reservas", href: "#booking" },
   { label: "Contacto", href: "#contacto" },
 ];
 
 const socialLinks = [
   { icon: Instagram, label: "Instagram", href: "https://instagram.com/auraspa" },
   { icon: Facebook, label: "Facebook", href: "https://facebook.com/auraspa" },
-  {
-    icon: () => (
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.77a4.85 4.85 0 01-1.01-.08z"/>
-      </svg>
-    ),
-    label: "TikTok",
-    href: "https://tiktok.com/@auraspa",
-  },
   { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/51999999999" },
 ];
 
 export default function Footer() {
   const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleNavClick = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail("");
-    }
+    setShowModal(true);
+    setEmail("");
   };
 
   return (
-    <footer className="bg-cream border-t border-sand" aria-label="Pie de página">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          <div className="lg:col-span-2">
-            <a
-              href="#inicio"
-              onClick={(e) => { e.preventDefault(); handleNavClick("#inicio"); }}
-              className="font-serif italic text-2xl text-forestDark hover:text-gold transition-colors duration-300 block mb-3"
-            >
-              Aura Spa
-            </a>
-            <p className="font-sans text-sm text-textMuted leading-relaxed max-w-xs mb-6">
-              Un santuario de bienestar donde la belleza natural y la sofisticación
-              se encuentran para transformar tu experiencia de vida.
+    <>
+      <footer className="bg-cream border-t border-sand">
+        <div className="max-w-6xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-3">
+
+          {/* Marca */}
+          <div>
+            <h2 className="text-xl font-semibold mb-3">Aura Spa</h2>
+            <p className="text-sm text-gray-500 mb-4">
+              Reserva tu momento de bienestar de forma rápida y sencilla.
             </p>
 
-            <div className="flex items-center gap-2">
+            <div className="flex gap-2">
               {socialLinks.map(({ icon: Icon, label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 bg-sand rounded-full flex items-center justify-center hover:bg-gold/20 hover:text-gold text-textMuted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gold/30"
-                  aria-label={label}
-                >
-                  <Icon size={15} />
+                <a key={label} href={href} target="_blank">
+                  <div className="w-9 h-9 flex items-center justify-center border rounded">
+                    <Icon size={16} />
+                  </div>
                 </a>
               ))}
             </div>
           </div>
 
+          {/* Navegación */}
           <div>
-            <h3 className="font-sans text-xs font-semibold text-forestDark tracking-widest uppercase mb-5">
-              Navegación
-            </h3>
-            <ul className="space-y-3" role="list">
+            <h3 className="text-sm font-semibold mb-4">Navegación</h3>
+            <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                    className="font-sans text-sm text-textMuted hover:text-gold transition-colors duration-200 focus:outline-none focus:text-gold"
+                  <button
+                    onClick={() => handleNavClick(link.href)}
+                    className="text-sm text-gray-500 hover:text-black"
                   >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* Newsletter */}
           <div>
-            <h3 className="font-sans text-xs font-semibold text-forestDark tracking-widest uppercase mb-5">
-              Newsletter
-            </h3>
-            <p className="font-sans text-sm text-textMuted mb-4 leading-relaxed">
-              Recibe ofertas exclusivas y consejos de bienestar.
-            </p>
-            {subscribed ? (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="font-sans text-sm text-gold"
-              >
-                ¡Gracias por suscribirte!
-              </motion.p>
-            ) : (
-              <form onSubmit={handleSubscribe} className="space-y-2" aria-label="Suscripción al newsletter">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="tu@email.com"
-                  required
-                  aria-label="Email para newsletter"
-                  className="w-full font-sans text-sm bg-sand/40 border border-sand rounded-xl px-4 py-3 text-forestDark placeholder-textMuted/50 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold transition-all duration-200"
-                />
-                <button
-                  type="submit"
-                  className="w-full bg-forestDark text-cream font-sans text-xs font-medium py-3 rounded-xl hover:bg-forest active:scale-[0.98] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-forestDark/30"
-                  aria-label="Suscribirse al newsletter"
-                >
-                  Suscribirme
-                </button>
-              </form>
-            )}
+            <h3 className="text-sm font-semibold mb-4">Newsletter</h3>
+
+            <form onSubmit={handleSubscribe} className="space-y-2">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="tu@email.com"
+                required
+                className="w-full border p-3 rounded text-sm"
+              />
+
+              <button className="w-full bg-black text-white py-2 rounded text-sm">
+                Suscribirme
+              </button>
+            </form>
           </div>
+
         </div>
 
-        <div className="border-t border-sand pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-sans text-xs text-textMuted/70">
-            © {new Date().getFullYear()} Aura Spa. Todos los derechos reservados.
-          </p>
-          <div className="flex items-center gap-4">
-            <a href="#" className="font-sans text-xs text-textMuted/70 hover:text-textMuted transition-colors focus:outline-none">
-              Política de privacidad
-            </a>
-            <a href="#" className="font-sans text-xs text-textMuted/70 hover:text-textMuted transition-colors focus:outline-none">
-              Términos de servicio
-            </a>
+        <div className="text-center text-xs text-gray-400 pb-6">
+          © {new Date().getFullYear()} Aura Spa
+        </div>
+      </footer>
+
+      {/* 🔥 MODAL */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+          <div className="bg-white p-6 rounded-lg w-full max-w-sm relative">
+
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-3"
+            >
+              <X size={18} />
+            </button>
+
+            <h3 className="text-lg font-semibold mb-2 text-center">
+              Próximamente disponible
+            </h3>
+
+            <p className="text-sm text-gray-500 text-center mb-4">
+              Estamos trabajando en el sistema de suscripciones.
+              Muy pronto podrás recibir promociones y novedades.
+            </p>
+
+            <button
+              onClick={() => setShowModal(false)}
+              className="w-full bg-black text-white py-2 rounded"
+            >
+              Entendido
+            </button>
+
           </div>
         </div>
-      </div>
-    </footer>
+      )}
+    </>
   );
 }

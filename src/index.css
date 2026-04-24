@@ -4,6 +4,7 @@
 @import "tw-animate-css";
 
 @theme inline {
+  /*  COLORS */
   --color-cream: #FAF8F5;
   --color-forest: #2D4A3E;
   --color-forestDark: #1F342C;
@@ -11,6 +12,7 @@
   --color-sand: #E8E1D8;
   --color-textMuted: #6B6B6B;
 
+  /* SYSTEM */
   --color-background: var(--color-cream);
   --color-foreground: var(--color-forestDark);
   --color-border: var(--color-sand);
@@ -32,10 +34,12 @@
   --color-destructive: #C0392B;
   --color-destructive-foreground: #FFFFFF;
 
+  /*  TYPOGRAPHY */
   --font-sans: 'DM Sans', sans-serif;
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', serif;
   --font-mono: Menlo, monospace;
 
+  /*  RADIUS */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
@@ -43,6 +47,7 @@
   --radius: 8px;
 }
 
+/*  RESET */
 * {
   box-sizing: border-box;
 }
@@ -51,8 +56,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/*  BASE GLOBAL */
 body {
   margin: 0;
-  font-family: 'DM Sans', sans-serif;
-  background-color: #FAF8F5;
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+/*  SCROLL (detalle premium) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-sand);
+  border-radius: 10px;
+}
+
+/*  SELECCIÓN DE TEXTO */
+::selection {
+  background-color: var(--color-gold);
+  color: white;
 }
