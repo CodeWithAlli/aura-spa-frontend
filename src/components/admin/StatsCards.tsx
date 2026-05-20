@@ -10,7 +10,7 @@ interface Props {
 }
 
 // 🔥 BASE URL CENTRALIZADA
-const API_URL = "https://aura-spa-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function StatsCards({ refreshTrigger }: Props) {
   const [stats, setStats] = useState({

@@ -12,7 +12,7 @@ import Stepper from "@/components/booking/Stepper";
 import ConfirmationScreen from "@/components/ConfirmationScreen";
 
 // 🔥 BASE URL CENTRALIZADA
-const API_URL = "https://aura-spa-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function BookingPage() {
   const [step, setStep] = useState(1);

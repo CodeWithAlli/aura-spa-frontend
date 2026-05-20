@@ -6,7 +6,7 @@ const timeSlots = [
 ];
 
 // 🔥 BASE URL CENTRALIZADA
-const API_URL = "https://aura-spa-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const DateTimeStep = ({ register, errors, watch, setValue }: any) => {
   const [ocupados, setOcupados] = useState<string[]>([]);

@@ -17,7 +17,7 @@ interface Props {
 }
 
 // 🔥 BASE URL CENTRALIZADA
-const API = "https://aura-spa-backend.onrender.com";
+const API = import.meta.env.VITE_API_URL;
 
 export default function ReservationsTable({ estado, onChange }: Props) {
   const [reservas, setReservas] = useState<Reserva[]>([]);

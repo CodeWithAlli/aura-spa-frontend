@@ -5,7 +5,7 @@ import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 
 // 🔥 BASE URL CENTRALIZADA
-const API_URL = "https://aura-spa-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");

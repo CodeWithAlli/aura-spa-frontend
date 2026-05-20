@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-const API_URL = "https://aura-spa-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 type Service = {
   id: number;
