@@ -26,8 +26,7 @@ export default function DailyCalendar() {
     const fetchReservas = async () => {
       try {
         setLoading(true);
-
-        const API_URL = import.meta.env.VITE_API_URL;
+        
         const res = await fetch(`${API_URL}/reservas`);
 
         if (!res.ok) {
