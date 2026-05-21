@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const hours = [
   "09:00","10:00","11:00","12:00",
   "14:00","15:00","16:00","17:00","18:00"
 ];
-
 interface Reserva {
   id: number;
   nombre: string;
@@ -26,7 +27,8 @@ export default function DailyCalendar() {
       try {
         setLoading(true);
 
-        const res = await fetch("http://localhost:8000/reservas");
+        const API_URL = import.meta.env.VITE_API_URL;
+        const res = await fetch(`${API_URL}/reservas`);
 
         if (!res.ok) {
           throw new Error();
@@ -52,25 +54,25 @@ export default function DailyCalendar() {
   };
 
   return (
-  <div className="space-y-4 w-full flex flex-col items-center">
+    <div className="space-y-4 w-full flex flex-col items-center">
 
-    {/* 📅 FECHA */}
-    <div className="w-full max-w-md">
-      <input
-        type="date"
-        value={fecha}
-        onChange={(e) => setFecha(e.target.value)}
-        className="border p-2 rounded w-full"
-      />
-    </div>
+      {/* 📅 FECHA */}
+      <div className="w-full max-w-md">
+        <input
+          type="date"
+          value={fecha}
+          onChange={(e) => setFecha(e.target.value)}
+          className="border p-2 rounded w-full"
+        />
+      </div>
 
-    {/* ⏳ LOADING */}
-    {loading && (
-      <p className="text-sm text-gray-400">Cargando agenda...</p>
-    )}
+      {/* ⏳ LOADING */}
+      {loading && (
+        <p className="text-sm text-gray-400">Cargando agenda...</p>
+      )}
 
-    {/* 📊 HORARIOS */}
-    <div className="
+      {/* 📊 HORARIOS */}
+      <div className="
       w-full 
       max-w-2xl 
       grid 
@@ -78,33 +80,33 @@ export default function DailyCalendar() {
       sm:grid-cols-2 
       gap-3
     ">
-      {hours.map((hora) => {
-        const reservasHora = getReservasPorHora(hora);
+        {hours.map((hora) => {
+          const reservasHora = getReservasPorHora(hora);
 
-        return (
-          <div key={hora} className="border rounded p-3 bg-white w-full">
+          return (
+            <div key={hora} className="border rounded p-3 bg-white w-full">
 
-            <p className="font-semibold">{hora}</p>
+              <p className="font-semibold">{hora}</p>
 
-            {reservasHora.length === 0 ? (
-              <p className="text-gray-400 text-sm">Disponible</p>
-            ) : (
-              <div className="space-y-1">
-                {reservasHora.map((r) => (
-                  <div
-                    key={r.id}
-                    className="text-sm bg-gray-100 p-2 rounded"
-                  >
-                    {r.nombre} - {r.servicio}
-                  </div>
-                ))}
-              </div>
-            )}
+              {reservasHora.length === 0 ? (
+                <p className="text-gray-400 text-sm">Disponible</p>
+              ) : (
+                <div className="space-y-1">
+                  {reservasHora.map((r) => (
+                    <div
+                      key={r.id}
+                      className="text-sm bg-gray-100 p-2 rounded"
+                    >
+                      {r.nombre} - {r.servicio}
+                    </div>
+                  ))}
+                </div>
+              )}
 
-          </div>
-        );
-      })}
+            </div>
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
 }
