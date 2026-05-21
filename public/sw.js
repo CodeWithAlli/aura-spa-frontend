@@ -23,6 +23,9 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
+
+  // No interceptar peticiones a dominios externos (backend)
+  if (url.origin !== self.location.origin) return;
   if (url.pathname.startsWith('/api/')) return;
 
   event.respondWith(
