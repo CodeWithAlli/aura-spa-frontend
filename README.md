@@ -1,26 +1,82 @@
 # 🌿 AURA SPA
 
-Sistema de gestión integral para spa y centros de bienestar desarrollado con **FastAPI**, **React**, **Vite** y **MySQL**.
-
-## 🚀 Demo
-
-🔗 **Aplicación en línea:** https://aura-spa-frontend.vercel.app/
+Sistema web de gestión integral para spas y centros de bienestar, desarrollado con **FastAPI**, **React**, **Vite** y **MySQL**. La plataforma permite administrar usuarios, especialistas, servicios y operaciones internas mediante una interfaz moderna y una arquitectura cliente-servidor escalable.
+<img width="883" height="958" alt="image" src="https://github.com/user-attachments/assets/2426c8d2-4ebe-4b26-a1d8-646f96e0bd31" />
 
 ---
 
-## 📋 Descripción
+## 📌 Nota para Reclutadores y Evaluadores
 
-AURA SPA es una plataforma web diseñada para administrar los procesos de un spa de manera eficiente.
+Este proyecto utiliza servicios gratuitos para su despliegue. Debido a las limitaciones de estos servicios, el backend puede entrar en modo de suspensión después de períodos prolongados de inactividad.
 
-El sistema permite:
+**Si al acceder al demo observa una carga lenta durante los primeros segundos, espere un momento y recargue la página. El servicio se reactivará automáticamente.**
 
-* Gestión de usuarios y roles.
-* Administración de especialistas.
-* Gestión de servicios y tratamientos.
-* Control de citas y reservas.
-* Panel administrativo.
-* Autenticación segura.
-* Historial y seguimiento de actividades.
+Si encuentra algún inconveniente al acceder al sistema o desea solicitar credenciales adicionales para evaluación, puede contactarme en:
+
+📧 **[codewithalli.dev@gmail.com](mailto:codewithalli.dev@gmail.com)**
+
+---
+
+## 🚀 Demo en Producción
+
+**Aplicación Web:**
+https://aura-spa-frontend.vercel.app/
+
+---
+
+## 🎯 Objetivo del Proyecto
+
+AURA SPA fue desarrollado con el propósito de digitalizar y optimizar la gestión administrativa de un spa, centralizando la información de usuarios, especialistas y servicios en una única plataforma.
+
+El sistema busca mejorar la organización interna, facilitar la administración de recursos y proporcionar una experiencia de usuario intuitiva tanto para administradores como para el personal especializado.
+
+---
+
+## ✨ Características Principales
+
+### Gestión de Usuarios
+
+* Registro y autenticación de usuarios.
+* Control de acceso basado en roles.
+* Administración de cuentas.
+
+### Gestión de Especialistas
+
+* Registro de especialistas.
+* Administración de información profesional.
+* Asignación de funciones y actividades.
+
+### Panel Administrativo
+
+* Visualización de información centralizada.
+* Gestión completa de registros del sistema.
+* Herramientas administrativas para la operación diaria.
+
+### Seguridad
+
+* Autenticación mediante API.
+* Protección de rutas.
+* Gestión de sesiones de usuario.
+
+### Arquitectura Cliente-Servidor
+
+* Frontend desacoplado del backend.
+* API REST desarrollada con FastAPI.
+* Base de datos relacional MySQL.
+
+---
+
+## 🏗️ Arquitectura del Sistema
+
+```text
+Frontend (React + Vite)
+          │
+          ▼
+Backend (FastAPI)
+          │
+          ▼
+MySQL Database
+```
 
 ---
 
@@ -37,22 +93,24 @@ El sistema permite:
 
 * FastAPI
 * Python
-* JWT Authentication
+* REST API
 
 ### Base de Datos
 
 * MySQL
 
-### Despliegue
+### Herramientas
 
-* Vercel (Frontend)
+* Git
+* GitHub
+* Vercel
 
 ---
 
-## 📂 Estructura del Proyecto
+## 📂 Estructura General
 
 ```text
-AURA-SPA/
+AURA-SPA
 │
 ├── backend/
 │   ├── main.py
@@ -75,31 +133,20 @@ AURA-SPA/
 
 ## ⚙️ Instalación Local
 
-### 1. Clonar el repositorio
+### 1. Clonar el Repositorio
 
 ```bash
-git clone https://github.com/TU-USUARIO/aura-spa.git
-
+git clone https://github.com/CodeWithAlli/aura-spa.git
 cd aura-spa
 ```
 
----
-
 ### 2. Configurar la Base de Datos
 
-Ejecutar el script:
+Ejecutar:
 
 ```sql
 source backend/init_db.sql
 ```
-
-Esto creará la base de datos:
-
-```text
-aura_spa
-```
-
----
 
 ### 3. Configurar Backend
 
@@ -111,13 +158,13 @@ python -m venv .venv
 
 Activar entorno virtual:
 
-Windows:
+Windows
 
 ```bash
 .venv/Scripts/activate
 ```
 
-Linux/Mac:
+Linux / Mac
 
 ```bash
 source .venv/bin/activate
@@ -129,7 +176,7 @@ Instalar dependencias:
 pip install -r requirements.txt
 ```
 
-Configurar archivo `.env`:
+Configurar archivo `.env`
 
 ```env
 MYSQLHOST=localhost
@@ -139,19 +186,11 @@ MYSQLDATABASE=AURA_SPA
 MYSQLPORT=3306
 ```
 
-Iniciar servidor:
+Ejecutar servidor:
 
 ```bash
 uvicorn main:app --reload --port 8000
 ```
-
-Backend disponible en:
-
-```text
-http://localhost:8000
-```
-
----
 
 ### 4. Configurar Frontend
 
@@ -163,13 +202,7 @@ npm install
 npm run dev
 ```
 
-Frontend disponible en:
-
-```text
-http://localhost:5173
-```
-
-Archivo `.env`:
+Archivo `.env`
 
 ```env
 VITE_API_URL=http://localhost:8000
@@ -177,9 +210,9 @@ VITE_API_URL=http://localhost:8000
 
 ---
 
-## 👤 Usuarios de Prueba
+## 👤 Credenciales de Prueba
 
-### Administradores
+### Administrador
 
 | Email                                         | Contraseña |
 | --------------------------------------------- | ---------- |
@@ -194,29 +227,42 @@ VITE_API_URL=http://localhost:8000
 
 ---
 
-## 🔐 Roles del Sistema
+## 📸 Evidencias del Proyecto
 
-* **Administrador**
-
-  * Gestión completa del sistema.
-  * Administración de usuarios.
-  * Gestión de especialistas.
-  * Visualización de estadísticas.
-
-* **Especialista**
-
-  * Gestión de citas asignadas.
-  * Consulta de información relacionada con servicios.
+Agregar capturas reales del sistema:
+[Login]
+<img width="429" height="529" alt="image" src="https://github.com/user-attachments/assets/4a4907c4-59af-49b6-a3b5-bf4c50f82ed3" />
+[Dashboard]
+<img width="1910" height="800" alt="image" src="https://github.com/user-attachments/assets/21d416b6-8b73-4e5e-9dd1-61714959e122" />
+[Usuarios]
+<img width="1147" height="647" alt="image" src="https://github.com/user-attachments/assets/8bb0afff-6af0-484d-b214-5cda80e5ab93" />
+[Servicios]
+<img width="1145" height="745" alt="image" src="https://github.com/user-attachments/assets/efa10637-edfa-4791-9108-eacf290ee3e6" />
 
 ---
 
-## 📸 Capturas
+## 💡 Aprendizajes y Competencias Aplicadas
 
-Agregar aquí capturas de pantalla del sistema.
-<img width="487" height="381" alt="image" src="https://github.com/user-attachments/assets/492287a9-0985-4f51-bc7e-8247baff3a77" />
+Durante el desarrollo de este proyecto se aplicaron conocimientos relacionados con:
+
+* Desarrollo Full Stack.
+* Diseño de APIs REST.
+* Integración Frontend y Backend.
+* Gestión de bases de datos relacionales.
+* Control de acceso basado en roles.
+* Arquitectura cliente-servidor.
+* Despliegue de aplicaciones web.
+
+---
+
+## 📬 Contacto
+
+Para consultas, comentarios o evaluación técnica del proyecto:
+
+**Email:** [codewithalli.dev@gmail.com](mailto:codewithalli.dev@gmail.com)
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto fue desarrollado con fines académicos y de aprendizaje.
+Proyecto desarrollado con fines educativos, académicos y de fortalecimiento de competencias profesionales en desarrollo de software.
