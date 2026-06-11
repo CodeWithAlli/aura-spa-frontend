@@ -1,6 +1,7 @@
 # 🌿 AURA SPA
 
 Sistema web de gestión integral para spas y centros de bienestar, desarrollado con **FastAPI**, **React**, **Vite** y **MySQL**. La plataforma permite administrar usuarios, especialistas, servicios y operaciones internas mediante una interfaz moderna y una arquitectura cliente-servidor escalable.
+
 <img width="883" height="958" alt="image" src="https://github.com/user-attachments/assets/2426c8d2-4ebe-4b26-a1d8-646f96e0bd31" />
 
 ---
@@ -230,8 +231,11 @@ VITE_API_URL=http://localhost:8000
 ## 📸 Evidencias del Proyecto
 
 Agregar capturas reales del sistema:
+
 [Login]
+
 <img width="429" height="529" alt="image" src="https://github.com/user-attachments/assets/4a4907c4-59af-49b6-a3b5-bf4c50f82ed3" />
+
 [Dashboard]
 <img width="1910" height="800" alt="image" src="https://github.com/user-attachments/assets/21d416b6-8b73-4e5e-9dd1-61714959e122" />
 [Usuarios]
